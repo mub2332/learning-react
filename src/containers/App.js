@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import styles from './App.module.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -46,36 +47,22 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
-        <div>
           <Persons 
             persons={this.state.persons}
             clicked={this.deletePersonHandler}
             changed={this.nameChangedHandler}></Persons>
-        </div>
       );
-      
-      btnClass = styles.red;
-    }
-
-    let pClass = [];
-
-    if (this.state.persons.length % 2 === 0) {
-      pClass.push(styles.red);
-    } else {
-      pClass.push(styles.bold);
     }
 
     return (
       <div className={styles.App}>
-        <h1>Learn React</h1>
-        <p className={pClass.join(' ')}>style check</p>
-        <button
-          className={btnClass}
-          onClick={this.togglePersonsHandler}>Toggle display</button>
+        <Cockpit
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler}></Cockpit>
         {persons}
       </div>
     );
