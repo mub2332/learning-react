@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 import './App.css';
 import Person from './Person/Person';
@@ -87,21 +87,23 @@ class App extends Component {
 
     let pClass = null;
 
-    if (this.state.persons.length % 2 == 0) {
+    if (this.state.persons.length % 2 === 0) {
       pClass = redBold;
     } else {
       pClass = bold;
     }
 
     return (
-      <div className="App">
-        <h1>Learn React</h1>
-        <p className={pClass}>style check</p>
-        <button
-          style={style} 
-          onClick={this.togglePersonsHandler}>Toggle display</button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Learn React</h1>
+          <p className={pClass}>style check</p>
+          <button
+            style={style} 
+            onClick={this.togglePersonsHandler}>Toggle display</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
